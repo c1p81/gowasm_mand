@@ -1,0 +1,30 @@
+<html>  
+    <head>
+        <meta charset="utf-8"/>
+        <script src="wasm_exec.js"></script>
+        <script>
+            const go = new Go();
+            WebAssembly.instantiateStreaming(fetch("wasm.wasm"), go.importObject).then((result) => {
+                go.run(result.instance);
+            });
+        </script>
+    </head>
+    <body>
+        <center>  2
+            <img id="immagine" name="immagine" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4
+            //8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==" alt="Red dot" /><br><br>
+            <input id="button" type="submit" name="button" onclick="ff()"/> <br>
+            <textarea id="imgbase64" name="imgbase64" cols="80" rows="200"></textarea>
+
+        </center>
+
+
+
+        <script>
+            var ff = function() {
+                immagine.src = go_function(ff)
+                imgbase64.value = go_function(ff)
+            }
+            </script>
+    </body>
+</html>  
